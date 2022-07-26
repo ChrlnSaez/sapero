@@ -46,6 +46,16 @@ const Models = () => {
     [filterByValues]
   );
 
+  if (availableCars?.length === 0) {
+    return (
+      <div className='mt-4 flex justify-center items-center'>
+        <h3 className='text-2xl font-semibold text-white'>
+          There are currently no cars available.
+        </h3>
+      </div>
+    );
+  }
+
   return (
     <div className='flex flex-col gap-2 items-center'>
       <h3 className='text-2xl font-semibold'>Book your suitable car</h3>
