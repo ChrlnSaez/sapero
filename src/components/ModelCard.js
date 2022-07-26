@@ -21,7 +21,7 @@ const ModelCard = ({
         <img
           src={image}
           alt='car'
-          className={`w-64 h-40 ${isLanding && 'w-72 h-48'}`}
+          className={`${isLanding ? 'w-72' : 'w-64 h-40'}`}
         />
         {!isLanding && (
           <>
