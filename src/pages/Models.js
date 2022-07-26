@@ -46,16 +46,6 @@ const Models = () => {
     [filterByValues]
   );
 
-  if (availableCars?.length === 0) {
-    return (
-      <div className='mt-4 flex justify-center items-center'>
-        <h3 className='text-2xl font-semibold text-white'>
-          There are currently no cars available.
-        </h3>
-      </div>
-    );
-  }
-
   return (
     <div className='flex flex-col gap-2 items-center'>
       <h3 className='text-2xl font-semibold'>Book your suitable car</h3>
@@ -67,18 +57,28 @@ const Models = () => {
           optionsStyle='-bottom-64 text-gray-600'
         />
       </div>
-      {isLoading ? (
-        <div className='flex mt-10 items-center justify-center'>
-          <Spinner />
+      {availableCars?.length === 0 ? (
+        <div className='mt-4 flex justify-center items-center'>
+          <h3 className='text-2xl font-semibold text-white'>
+            There are currently no cars available.
+          </h3>
         </div>
       ) : (
-        <div className='flex flex-col'>
-          <div className='grid grid-cols-1 md:grid-cols-3 gap-8 py-8'>
-            {availableCars?.map((car) => (
-              <ModelCard key={car._id} {...car} />
-            ))}
-          </div>
-        </div>
+        <>
+          {isLoading ? (
+            <div className='flex mt-10 items-center justify-center'>
+              <Spinner />
+            </div>
+          ) : (
+            <div className='flex flex-col'>
+              <div className='grid grid-cols-1 md:grid-cols-3 gap-8 py-8'>
+                {availableCars?.map((car) => (
+                  <ModelCard key={car._id} {...car} />
+                ))}
+              </div>
+            </div>
+          )}
+        </>
       )}
     </div>
   );
