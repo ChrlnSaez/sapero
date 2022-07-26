@@ -56,18 +56,9 @@ const testimonials = [
 const Landing = () => {
   const { data: cars } = useCars();
 
-  const availableCars = useMemo(
-    () =>
-      cars?.filter(
-        (car) =>
-          car.image && car.status !== 'rented' && car.status !== 'reserved'
-      ),
-    [cars]
-  );
-
   const randomCars = useMemo(
-    () => availableCars?.sort(() => Math.random() - 0.5).slice(0, 3),
-    [availableCars]
+    () => cars?.sort(() => Math.random() - 0.5).slice(0, 3),
+    [cars]
   );
 
   return (
